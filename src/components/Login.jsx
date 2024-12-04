@@ -7,8 +7,8 @@ import { BASE_URL } from "../utils/constants"
 
 const Login = () => {
 
-  const [emailId, setEmailId] = useState("")
-  const [password, setPassword] = useState("")
+  const [emailId, setEmailId] = useState("rahul@gmail.com")
+  const [password, setPassword] = useState("Rahul@123")
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -34,7 +34,7 @@ const Login = () => {
     <div>
         <label className="form-control w-full max-w-xs my-2">
           <div className="label">
-            <span className="label-text">Email ID: {emailId}</span>
+            <span className="label-text">Email ID</span>
           </div>
           <input type="text" value={emailId}  className="input input-bordered w-full max-w-xs"  onChange={(e)=> setEmailId(e.target.value)}/>
         </label>
