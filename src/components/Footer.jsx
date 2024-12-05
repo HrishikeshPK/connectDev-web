@@ -1,4 +1,4 @@
-
+// fixed bottom-0
 const Footer = () => {
   return (
     <div>
