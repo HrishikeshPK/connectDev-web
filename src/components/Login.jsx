@@ -18,6 +18,10 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+      if(emailId=="admin@gmail.com"){
+        const res = await axios.post(BASE_URL+"/admin/login", {emailId, password}, {withCredentials: true})
+        return navigate("/admin")
+      }
       const res = await axios.post(BASE_URL+"/login", {
         emailId,
         password,
