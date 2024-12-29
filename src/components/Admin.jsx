@@ -128,6 +128,8 @@ const openModal = (user) => {
         <p>Gender: {selectedUser.gender}</p>
         <p>Age: {selectedUser.age}</p>
         <p>Skills: {selectedUser.skills}</p>
+        <p>Created at: {selectedUser.trialStartDate}</p>
+        <p>Payment Status: {selectedUser.paymentStatus}</p>
         <button className="btn btn-error mt-10" onClick={() => deleteUser(selectedUser._id)}>Remove User</button>
       </>
       
