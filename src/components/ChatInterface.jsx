@@ -14,13 +14,13 @@ const ChatInterface = ({ user, onClose }) => {
 
     useEffect(() => {
         if (user) {
-            // Join the room
-            socket.emit('joinRoom', user._id);
+            
+            socket.emit('joinRoom', user._id);   // join the chatroom
 
-            // Fetch chat history
+            
             const fetchMessages = async () => {
                 try {
-                    const res = await axios.get(`${BASE_URL}/chat/${user._id}`, { withCredentials: true });
+                    const res = await axios.get(`${BASE_URL}/chat/${user._id}`, { withCredentials: true });  // fetching chat history
                     setMessages(res.data);
                 } catch (err) {
                     console.log(err);
@@ -29,8 +29,8 @@ const ChatInterface = ({ user, onClose }) => {
 
             fetchMessages();
 
-            // Listen for incoming messages
-            socket.on('receiveMessage', (message) => {
+           
+            socket.on('receiveMessage', (message) => {                  // listen for incoming messages
                 setMessages((prev) => [...prev, message]);
             });
 
@@ -40,8 +40,8 @@ const ChatInterface = ({ user, onClose }) => {
         }
     }, [user]);
 
-    // Auto-scroll to the bottom when messages update
-    useEffect(() => {
+   
+    useEffect(() => {                                                        // autoscroll to the bottom when messages update
         const chatHistory = document.querySelector('.chat-history');
         if (chatHistory) {
             chatHistory.scrollTop = chatHistory.scrollHeight;
@@ -52,16 +52,16 @@ const ChatInterface = ({ user, onClose }) => {
         if (!newMessage.trim()) return;
 
         const messageData = {
-            senderId: loggedInUser._id, // Replace with actual user ID
+            senderId: loggedInUser._id, 
             recipientId: user._id,
             text: newMessage,
         };
 
-        // Emit the message to the server
-        socket.emit('sendMessage', messageData);
+        
+        socket.emit('sendMessage', messageData);        // emit the message to the server
 
-        // Add the message to the local state
-        setMessages((prev) => [...prev, { ...messageData, timestamp: new Date() }]);
+      
+        setMessages((prev) => [...prev, { ...messageData, timestamp: new Date() }]);       // add the message to state
         setNewMessage('');
     };
 

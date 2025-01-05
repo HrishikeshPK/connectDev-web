@@ -98,9 +98,9 @@ const Payment = () => {
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(null);
 
-  const stripe = useStripe(); // Initialize Stripe
-  const elements = useElements(); // Initialize Elements
-  const user = useSelector((store) => store.user); // Get user info
+  const stripe = useStripe(); // getting stripe
+  const elements = useElements(); // initialize Elements
+  const user = useSelector((store) => store.user); // user info
   const navigate = useNavigate();
 
   const handlePayment = async () => {
@@ -149,7 +149,7 @@ const Payment = () => {
       </p>
 
       <div className="bg-white">
-        {/* Stripe Card Element */}
+        
         <CardElement />
         <button className="btn btn-primary" onClick={handlePayment}>
           Pay Now
